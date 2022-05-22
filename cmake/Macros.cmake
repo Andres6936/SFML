@@ -49,10 +49,22 @@ function(sfml_set_common_ios_properties target)
     endif()
 endfunction()
 
-# add a new target which is a SFML library
-# example: sfml_add_library(Graphics
-#                           SOURCES sprite.cpp image.cpp ...
-#                           [STATIC]) # Always create a static library and ignore BUILD_SHARED_LIBS
+#[[
+
+Add a new target which is a SFML library, the module name is replaced for the convention sfml-{module} and additional
+a alias is created with the convention SFML::{modules}.
+
+Example the command 'sfml_add_library(Graphics ...)' generate the target with the name of sfml-graphics and a alias
+with the name of SFML::Graphics, and the command 'sfml_add_library(System ...)' generate the target with the name
+of sfml-system and a alias SFML::System.
+
+Example of use macro: sfml_add_library(Graphics
+                           SOURCES sprite.cpp image.cpp ...
+                           [STATIC]) # Always create a static library and ignore BUILD_SHARED_LIBS
+
+Note: The macro invocation is case-insensitive.
+
+#]]
 macro(sfml_add_library module)
 
     # parse the arguments
@@ -61,13 +73,15 @@ macro(sfml_add_library module)
         message(FATAL_ERROR "Extra unparsed arguments when calling sfml_add_library: ${THIS_UNPARSED_ARGUMENTS}")
     endif()
 
-    # create the target
+    # Create the name target according to the convention
     string(TOLOWER sfml-${module} target)
+
     if (THIS_STATIC)
         add_library(${target} STATIC ${THIS_SOURCES})
     else()
         add_library(${target} ${THIS_SOURCES})
     endif()
+
     add_library(SFML::${module} ALIAS ${target})
 
     # enable C++17 support
