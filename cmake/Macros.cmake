@@ -257,12 +257,17 @@ macro(sfml_add_library module)
 
 endmacro()
 
-# add a new target which is a SFML example
-# example: sfml_add_example(ftp
-#                           SOURCES ftp.cpp ...
-#                           BUNDLE_RESOURCES MainMenu.nib ...    # Files to be added in target but not installed next to the executable
-#                           DEPENDS SFML::Network
-#                           RESOURCES_DIR resources)             # A directory to install next to the executable and sources
+#[[
+
+add a new target which is a SFML example
+example: sfml_add_example(ftp
+                          SOURCES ftp.cpp ...
+                          BUNDLE_RESOURCES MainMenu.nib ...    # Files to be added in target but not installed next to the executable
+                          DEPENDS SFML::Network
+                          RESOURCES_DIR resources)             # A directory to install next to the executable and sources
+
+
+#]]
 macro(sfml_add_example target)
 
     # parse the arguments
@@ -270,6 +275,10 @@ macro(sfml_add_example target)
 
     # set a source group for the source files
     source_group("" FILES ${THIS_SOURCES})
+
+    # Move the RESOURCES_DIR to current location where the binary will be generated, with this option the binary can
+    # be found the resources that needed for execute and work.
+    FILE(COPY ${THIS_RESOURCES_DIR} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
     # check whether resources must be added in target
     set(target_input ${THIS_SOURCES})
