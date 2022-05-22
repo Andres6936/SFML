@@ -7,7 +7,7 @@ set(SRC ${SRCROOT}/Island.cpp)
 # define the island target
 sfml_add_example(island GUI_APP
                  SOURCES ${SRC}
-                 DEPENDS SFML::Graphics
+                 DEPENDS SFML::Graphics SFML::Window SFML::System
                  RESOURCES_DIR resources)
 
 # external dependency headers

@@ -14,5 +14,5 @@ endif()
 sfml_add_example(tennis GUI_APP
                  SOURCES ${SRC}
                  BUNDLE_RESOURCES ${RESOURCES}
-                 DEPENDS SFML::Audio SFML::Graphics
+                 DEPENDS SFML::Audio SFML::Graphics SFML::System SFML::Window SFML::Audio
                  RESOURCES_DIR resources)

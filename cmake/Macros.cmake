@@ -331,6 +331,16 @@ macro(sfml_add_example target)
         sfml_set_common_ios_properties(${target})
     endif()
 
+    ADD_CUSTOM_COMMAND(TARGET ${target} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:SFML::Main> $<TARGET_FILE_DIR:${target}>)
+
+    FOREACH(EXAMPLE_DEPENDENCY IN LISTS THIS_DEPENDS)
+        ADD_CUSTOM_COMMAND(TARGET ${target} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:${EXAMPLE_DEPENDENCY}> $<TARGET_FILE_DIR:${target}>)
+    ENDFOREACH()
+
 endmacro()
 
 # add a new target which is a SFML test
