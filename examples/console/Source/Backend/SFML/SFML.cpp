@@ -4,6 +4,12 @@ SFML::SFML() : IRenderer()
 {
 	window.create(sf::VideoMode(sf::Vector2u(800, 600)), "Console");
 	window.setFramerateLimit(30);
+
+	if (!font.loadFromFile("Resources/Fonts/Square.ttf"))
+	{
+		// Show Error
+	}
+
 }
 
 bool SFML::isRunning() const noexcept
@@ -25,5 +31,9 @@ void SFML::input() noexcept
 
 void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
 {
-
+	text.setFont(font);
+	text.setString("Roguelike Console with several characters");
+	text.setCharacterSize(16);
+	text.setFillColor(sf::Color(255, 94, 14));
+	text.setStyle(sf::Text::Bold);
 }

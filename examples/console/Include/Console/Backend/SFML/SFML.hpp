@@ -5,6 +5,9 @@
 #include <cstdint>
 
 #include <SFML/Window.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
+
 #include "Console/Backend/IRenderer.hpp"
 
 class SFML : public IRenderer
@@ -14,6 +17,8 @@ private:
 
 	bool running = true;
 
+	sf::Text text;
+	sf::Font font;
 	sf::Window window;
 
 public:
