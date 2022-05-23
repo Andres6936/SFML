@@ -3,6 +3,7 @@
 SFML::SFML() : IRenderer()
 {
 	window.create(sf::VideoMode(sf::Vector2u(800, 600)), "Console");
+	window.setFramerateLimit(30);
 }
 
 bool SFML::isRunning() const noexcept
