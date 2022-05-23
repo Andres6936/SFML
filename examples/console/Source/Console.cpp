@@ -24,7 +24,27 @@ Console::Console(const std::uint32_t _width, const std::uint32_t _height) : widt
 	}
 }
 
-void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char)
+bool Console::isRunning() const noexcept
+{
+	return renderer->isRunning();
+}
+
+void Console::clear() noexcept
+{
+
+}
+
+void Console::input() noexcept
+{
+
+}
+
+void Console::draw() noexcept
+{
+
+}
+
+void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
 {
 	renderer->draw(x, y, _char);
 }
@@ -32,5 +52,10 @@ void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char)
 int main()
 {
 	Console console{ };
-	std::cout << "Hi";
+	while (console.isRunning())
+	{
+		console.clear();
+		console.input();
+		console.draw();
+	}
 }

@@ -4,16 +4,27 @@
 
 #include <cstdint>
 
+#include <SFML/Window.hpp>
 #include "Console/Backend/IRenderer.hpp"
 
 class SFML : public IRenderer
 {
 
+private:
+
+	bool running = true;
+
+	sf::Window window;
+
 public:
 
 	SFML();
 
-	void draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept;
+	bool isRunning() const noexcept override;
+
+	void input() noexcept override;
+
+	void draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept override;
 };
 
 #endif //SFML_SFML_HPP

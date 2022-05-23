@@ -33,12 +33,15 @@ public:
 
 	// Methods
 
-	void write(std::uint32_t x, std::uint32_t y, std::uint32_t _char);
+	bool isRunning() const noexcept;
 
-	bool isRunning() const noexcept
-	{
-		return running;
-	}
+	void clear() noexcept;
+
+	void input() noexcept;
+
+	void draw() noexcept;
+
+	void write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept;
 };
 
 #endif //SFML_CONSOLE_HPP

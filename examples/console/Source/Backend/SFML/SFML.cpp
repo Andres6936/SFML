@@ -2,6 +2,16 @@
 
 SFML::SFML() : IRenderer()
 {
+	window.create(sf::VideoMode(sf::Vector2u(800, 600)), "Console");
+}
+
+bool SFML::isRunning() const noexcept
+{
+	return running;
+}
+
+void SFML::input() noexcept
+{
 
 }
 
