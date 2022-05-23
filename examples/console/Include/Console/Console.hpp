@@ -12,7 +12,7 @@ class Console
 
 private:
 
-	bool root = false;
+	bool consoleRoot = false;
 	bool running = true;
 	std::uint32_t width;
 	std::uint32_t height;
@@ -20,6 +20,8 @@ private:
 	inline static std::unique_ptr <IRenderer> renderer{ nullptr };
 
 	static void setBackendRender();
+
+	void setConsoleModeMain();
 
 public:
 
