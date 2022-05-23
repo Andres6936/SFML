@@ -7,6 +7,9 @@ int main()
 	{
 		console.input();
 		console.clear();
+
+		console.write(0, 0, "Roguelike Console with several characters");
+
 		console.draw();
 	}
 }

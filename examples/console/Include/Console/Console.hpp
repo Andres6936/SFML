@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <cstdint>
+#include <string>
 
 #include "Console/Backend/IRenderer.hpp"
 
@@ -41,6 +42,8 @@ public:
 	void draw() noexcept;
 
 	void write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept;
+
+	void write(std::uint32_t x, std::uint32_t y, const std::string& message) noexcept;
 };
 
 #endif //SFML_CONSOLE_HPP

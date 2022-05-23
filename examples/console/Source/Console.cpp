@@ -46,3 +46,12 @@ void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexc
 {
 	renderer->draw(x, y, _char);
 }
+
+void Console::write(std::uint32_t x, std::uint32_t y, const std::string& _char) noexcept
+{
+	for (const char& glyph: _char)
+	{
+		renderer->draw(x, y, glyph);
+	}
+
+}
