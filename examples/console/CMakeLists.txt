@@ -3,7 +3,7 @@ PROJECT(SFML.Console)
 SET(SFML_CONSOLE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 SET(SFML_CONSOLE_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(SFML.Console.Lib
+ADD_LIBRARY(SFML.Console.Lib STATIC
         Source/Backend/IRenderer.cpp
         Source/Backend/SFML/SFML.cpp
         Source/Console.cpp)
