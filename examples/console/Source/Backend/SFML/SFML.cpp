@@ -27,7 +27,8 @@ void SFML::clear() noexcept
 
 void SFML::input() noexcept
 {
-	sf::Event event;
+	sf::Event event{ };
+
 	while (window.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
