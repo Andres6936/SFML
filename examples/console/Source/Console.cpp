@@ -36,7 +36,7 @@ void Console::clear() noexcept
 
 void Console::input() noexcept
 {
-
+	renderer->input();
 }
 
 void Console::draw() noexcept
