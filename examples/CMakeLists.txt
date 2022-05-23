@@ -41,3 +41,5 @@ endif()
 if(SFML_BUILD_GRAPHICS AND SFML_BUILD_AUDIO)
     add_subdirectory(tennis)
 endif()
+
+ADD_SUBDIRECTORY(console/)
