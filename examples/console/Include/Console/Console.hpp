@@ -5,7 +5,6 @@
 #include <cstdint>
 
 #include "Console/Backend/IRenderer.hpp"
-#include "Console/Backend/SFML/SFML.hpp"
 
 class Console
 {

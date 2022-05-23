@@ -1,6 +1,5 @@
-#include <iostream>
-
 #include "Console/Console.hpp"
+#include "Console/Backend/SFML/SFML.hpp"
 
 void Console::setBackendRender(std::uint32_t width, std::uint32_t height)
 {
