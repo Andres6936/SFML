@@ -7,12 +7,19 @@ SFML::SFML() : IRenderer()
 
 bool SFML::isRunning() const noexcept
 {
-	return running;
+	return window.isOpen();
 }
 
 void SFML::input() noexcept
 {
-
+	sf::Event event;
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+	}
 }
 
 void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
