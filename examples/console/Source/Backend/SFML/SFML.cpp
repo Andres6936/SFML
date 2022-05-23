@@ -1,6 +1,6 @@
 #include "Console/Backend/SFML/SFML.hpp"
 
-SFML::SFML() : IRenderer()
+SFML::SFML(std::uint32_t width, std::uint32_t height) : IRenderer(width, height)
 {
 	window.create(sf::VideoMode(sf::Vector2u(800, 600)), "Console");
 	window.setFramerateLimit(30);
@@ -38,7 +38,7 @@ void SFML::draw() noexcept
 {
 	text.setFont(font);
 	text.setString("Roguelike Console with several characters");
-	text.setCharacterSize(16);
+	text.setCharacterSize(SIZE_FONT_PIXELS);
 	text.setFillColor(sf::Color(255, 94, 14));
 	text.setStyle(sf::Text::Bold);
 

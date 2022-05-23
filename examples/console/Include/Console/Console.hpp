@@ -19,7 +19,7 @@ private:
 
 	inline static std::unique_ptr <IRenderer> renderer{ nullptr };
 
-	static void setBackendRender();
+	static void setBackendRender(std::uint32_t width, std::uint32_t height);
 
 	void setConsoleModeMain();
 

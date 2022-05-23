@@ -2,9 +2,9 @@
 
 #include "Console/Console.hpp"
 
-void Console::setBackendRender()
+void Console::setBackendRender(std::uint32_t width, std::uint32_t height)
 {
-	renderer = std::move(std::make_unique <SFML>());
+	renderer = std::move(std::make_unique <SFML>(width, height));
 }
 
 void Console::setConsoleModeMain()
@@ -18,8 +18,7 @@ Console::Console(const std::uint32_t _width, const std::uint32_t _height) : widt
 
 	if (not consoleRootCreated)
 	{
-		setBackendRender();
-
+		setBackendRender(width, height);
 		consoleRootCreated = true;
 	}
 }
