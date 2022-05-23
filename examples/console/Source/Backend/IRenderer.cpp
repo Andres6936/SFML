@@ -2,14 +2,14 @@
 
 // Getters
 
-std::uint32_t IRenderer::getWidthCell() const noexcept
+const std::uint32_t IRenderer::getWidthCell() const noexcept
 {
-	return width;
+	return widthCell;
 }
 
-std::uint32_t IRenderer::getHeightCell() const noexcept
+const std::uint32_t IRenderer::getHeightCell() const noexcept
 {
-	return height;
+	return heightCell;
 }
 
 // Setters

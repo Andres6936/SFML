@@ -4,7 +4,9 @@ SET(SFML_CONSOLE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 SET(SFML_CONSOLE_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_EXECUTABLE(SFML.Console
+        Source/Backend/IRenderer.cpp
         Source/Backend/SFML/SFML.cpp
+        Source/App.cpp
         Source/Console.cpp)
 
 #[[

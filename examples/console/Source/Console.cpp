@@ -47,14 +47,3 @@ void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexc
 {
 	renderer->draw(x, y, _char);
 }
-
-int main()
-{
-	Console console{ };
-	while (console.isRunning())
-	{
-		console.input();
-		console.clear();
-		console.draw();
-	}
-}

@@ -1,8 +1,11 @@
 #include "Console/Backend/SFML/SFML.hpp"
 
-SFML::SFML(std::uint32_t width, std::uint32_t height) : IRenderer(width, height)
+SFML::SFML(std::uint32_t width, std::uint32_t height) noexcept: IRenderer(width, height)
 {
-	window.create(sf::VideoMode(sf::Vector2u(800, 600)), "Console");
+	const std::uint32_t widthWindow = getWidthCell() * SIZE_FONT_PIXELS;
+	const std::uint32_t heightWindow = getHeightCell() * SIZE_FONT_PIXELS;
+
+	window.create(sf::VideoMode(sf::Vector2u(widthWindow, heightWindow)), "Console");
 	window.setFramerateLimit(30);
 
 	if (!font.loadFromFile("Resources/Fonts/Square.ttf"))

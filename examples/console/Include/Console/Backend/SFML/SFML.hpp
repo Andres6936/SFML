@@ -45,7 +45,7 @@ private:
 
 public:
 
-	SFML(std::uint32_t width, std::uint32_t height);
+	SFML(std::uint32_t width, std::uint32_t height) noexcept;
 
 	bool isRunning() const noexcept override;
 
