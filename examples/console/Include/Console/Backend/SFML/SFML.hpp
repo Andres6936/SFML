@@ -7,6 +7,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 #include "Console/Backend/IRenderer.hpp"
 
@@ -19,7 +20,7 @@ private:
 
 	sf::Text text;
 	sf::Font font;
-	sf::Window window;
+	sf::RenderWindow window;
 
 public:
 
@@ -27,7 +28,11 @@ public:
 
 	bool isRunning() const noexcept override;
 
+	void clear() noexcept override;
+
 	void input() noexcept override;
+
+	void draw() noexcept override;
 
 	void draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept override;
 };

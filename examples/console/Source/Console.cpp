@@ -31,7 +31,7 @@ bool Console::isRunning() const noexcept
 
 void Console::clear() noexcept
 {
-
+	renderer->clear();
 }
 
 void Console::input() noexcept
@@ -41,7 +41,7 @@ void Console::input() noexcept
 
 void Console::draw() noexcept
 {
-
+	renderer->draw();
 }
 
 void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
@@ -54,8 +54,8 @@ int main()
 	Console console{ };
 	while (console.isRunning())
 	{
-		console.clear();
 		console.input();
+		console.clear();
 		console.draw();
 	}
 }

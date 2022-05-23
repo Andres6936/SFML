@@ -17,6 +17,11 @@ bool SFML::isRunning() const noexcept
 	return window.isOpen();
 }
 
+void SFML::clear() noexcept
+{
+	window.clear();
+}
+
 void SFML::input() noexcept
 {
 	sf::Event event;
@@ -29,11 +34,19 @@ void SFML::input() noexcept
 	}
 }
 
-void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
+void SFML::draw() noexcept
 {
 	text.setFont(font);
 	text.setString("Roguelike Console with several characters");
 	text.setCharacterSize(16);
 	text.setFillColor(sf::Color(255, 94, 14));
 	text.setStyle(sf::Text::Bold);
+
+	window.draw(text);
+	window.display();
+}
+
+void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
+{
+
 }
