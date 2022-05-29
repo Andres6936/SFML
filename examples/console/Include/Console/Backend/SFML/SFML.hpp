@@ -31,7 +31,6 @@ private:
 
 	bool running = true;
 
-	sf::Text text;
 	sf::Font font;
 
 	/**

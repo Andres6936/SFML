@@ -71,12 +71,6 @@ void SFML::input() noexcept
 
 void SFML::draw() noexcept
 {
-	text.setFont(font);
-	text.setString("Roguelike Console with several characters");
-	text.setCharacterSize(SIZE_FONT_PIXELS);
-	text.setFillColor(sf::Color(255, 94, 14));
-	text.setStyle(sf::Text::Bold);
-
 	for (const sf::RectangleShape& rect: buffer)
 	{
 		window.draw(rect);
@@ -93,13 +87,12 @@ void SFML::draw() noexcept
 		window.draw(image);
 	}
 
-	window.draw(text);
 	window.display();
 }
 
 void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
 {
-
+	bufferChar.at(y * getWidthCell() + x) = _char;
 }
 
 // Private Methods

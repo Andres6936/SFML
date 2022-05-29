@@ -47,11 +47,10 @@ void Console::write(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexc
 	renderer->draw(x, y, _char);
 }
 
-void Console::write(std::uint32_t x, std::uint32_t y, const std::string& _char) noexcept
+void Console::write(std::uint32_t x, std::uint32_t y, const std::string& message) noexcept
 {
-	for (const char& glyph: _char)
+	for (int index = 0; index < message.size(); ++index)
 	{
-		renderer->draw(x, y, glyph);
+		renderer->draw(x + index, y, message.at(index));
 	}
-
 }
