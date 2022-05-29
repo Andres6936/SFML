@@ -44,7 +44,12 @@ private:
 	 */
 	sf::RenderWindow window;
 
+	std::vector <std::uint32_t> bufferChar;
 	std::vector <sf::RectangleShape> buffer;
+
+	// Methods
+
+	sf::Vector2f getRelativeVectorByIndex(const std::uint32_t index) const noexcept;
 
 public:
 
