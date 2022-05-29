@@ -80,10 +80,24 @@ void SFML::draw() noexcept
 	for (int index = 0; index < bufferChar.size(); ++index)
 	{
 		sf::Glyph glyph = font.getGlyph(bufferChar.at(index), SIZE_FONT_PIXELS, true);
-		sf::Sprite image{ };
-		image.setTexture(texture);
-		image.setPosition(getRelativeVectorByIndex(index));
+		sf::Sprite image{ texture };
 		image.setTextureRect(glyph.textureRect);
+
+		sf::Vector2f relativePosition = getRelativeVectorByIndex(index);
+		// These calculations are exclusively to improve the positioning of
+		// the characters in the console, with this we center the character
+		// both vertically and horizontally.
+
+		// The offset in the x-axis in pixels.
+		const std::uint32_t offsetX = (SIZE_FONT_PIXELS - glyph.textureRect.width) / 2;
+		// The offset in the y-axis in pixels.
+		const std::uint32_t offsetY = (SIZE_FONT_PIXELS - glyph.textureRect.height) / 2;
+		// Center the character  in its respective cell, It is to visually
+		// improve the layout of the character
+		relativePosition.x += static_cast<float>(offsetX);
+		relativePosition.y += static_cast<float>(offsetY);
+
+		image.setPosition(relativePosition);
 		window.draw(image);
 	}
 
