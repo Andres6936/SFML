@@ -1,5 +1,13 @@
-#include <SFML/Graphics/RectangleShape.hpp>
 #include "Console/Backend/SFML/SFML.hpp"
+
+sf::Color getRandomColor()
+{
+	const std::uint8_t red = rand() % 256;
+	const std::uint8_t green = rand() % 256;
+	const std::uint8_t blue = rand() % 256;
+
+	return { red, green, blue };
+}
 
 SFML::SFML(std::uint32_t width, std::uint32_t height) noexcept: IRenderer(width, height)
 {
@@ -14,6 +22,24 @@ SFML::SFML(std::uint32_t width, std::uint32_t height) noexcept: IRenderer(width,
 		// Show Error
 	}
 
+	buffer.resize(getWidthCell() * getHeightCell());
+
+	// Initialize the buffer
+	for (int x = 0; x < getWidthCell(); ++x)
+	{
+		for (int y = 0; y < getHeightCell(); ++y)
+		{
+			sf::RectangleShape rect{ };
+			rect.setSize({ 16, 16 });
+			rect.setFillColor(getRandomColor());
+			rect.setPosition({
+					static_cast<float>(x * SIZE_FONT_PIXELS),
+					static_cast<float>(y * SIZE_FONT_PIXELS)
+			});
+
+			buffer.at(y * getWidthCell() + x) = rect;
+		}
+	}
 }
 
 bool SFML::isRunning() const noexcept
@@ -39,15 +65,6 @@ void SFML::input() noexcept
 	}
 }
 
-sf::Color getRandomColor()
-{
-	const std::uint8_t red = rand() % 256;
-	const std::uint8_t green = rand() % 256;
-	const std::uint8_t blue = rand() % 256;
-
-	return { red, green, blue };
-}
-
 void SFML::draw() noexcept
 {
 	text.setFont(font);
@@ -56,20 +73,9 @@ void SFML::draw() noexcept
 	text.setFillColor(sf::Color(255, 94, 14));
 	text.setStyle(sf::Text::Bold);
 
-	for (int x = 0; x < getWidthCell(); ++x)
+	for (const sf::RectangleShape& rect: buffer)
 	{
-		for (int y = 0; y < getHeightCell(); ++y)
-		{
-			sf::RectangleShape rect{ };
-			rect.setSize({ 16, 16 });
-			rect.setFillColor(getRandomColor());
-			rect.setPosition({
-					static_cast<float>(x * SIZE_FONT_PIXELS),
-					static_cast<float>(y * SIZE_FONT_PIXELS)
-			});
-
-			window.draw(rect);
-		}
+		window.draw(rect);
 	}
 
 	window.draw(text);
