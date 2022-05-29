@@ -33,7 +33,7 @@ SFML::SFML(std::uint32_t width, std::uint32_t height) noexcept: IRenderer(width,
 		for (int y = 0; y < getHeightCell(); ++y)
 		{
 			sf::RectangleShape rect{ };
-			rect.setSize({ 16, 16 });
+			rect.setSize({ static_cast<float>(SIZE_FONT_PIXELS), static_cast<float>(SIZE_FONT_PIXELS) });
 			rect.setFillColor(getRandomColor());
 			rect.setPosition({
 					static_cast<float>(x * SIZE_FONT_PIXELS),
@@ -106,8 +106,8 @@ void SFML::draw(std::uint32_t x, std::uint32_t y, std::uint32_t _char) noexcept
 
 sf::Vector2f SFML::getRelativeVectorByIndex(const std::uint32_t index) const noexcept
 {
-	const std::uint32_t x = (index / getWidthCell());
-	const std::uint32_t y = (index % getWidthCell());
+	const std::uint32_t x = (index % getWidthCell());
+	const std::uint32_t y = (index / getWidthCell());
 
 	return { static_cast<float>(x * SIZE_FONT_PIXELS), static_cast<float>(y * SIZE_FONT_PIXELS) };
 }
