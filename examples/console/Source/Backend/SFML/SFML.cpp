@@ -1,3 +1,5 @@
+#include <SFML/Graphics/Image.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include "Console/Backend/SFML/SFML.hpp"
 
 sf::Color getRandomColor()
@@ -73,12 +75,22 @@ void SFML::draw() noexcept
 	text.setFillColor(sf::Color(255, 94, 14));
 	text.setStyle(sf::Text::Bold);
 
+	const sf::Texture& texture = font.getTexture(16);
+	sf::Glyph glyph = font.getGlyph('@', 16, true);
+	sf::Sprite image;
+	image.setTexture(texture);
+	image.setPosition({ 16, 16 });
+	image.setColor(sf::Color::Magenta);
+	image.setTextureRect(glyph.textureRect);
+
+
 	for (const sf::RectangleShape& rect: buffer)
 	{
 		window.draw(rect);
 	}
 
 	window.draw(text);
+	window.draw(image);
 	window.display();
 }
 
